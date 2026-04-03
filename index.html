@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hover image sections</title>
+</head>
+<body>
+    <section id="card-container">
+        <div class="back-bg"></div>
+        <img id="bg-tokyo" src="./images/Tokyo.jpg" alt="Tokyo">
+        <img id="bg-frankfurt" src="./images/Frankfurt.jpg" alt="Frankfurt">
+        <img id="bg-london" src="./images/London.jpg" alt="London">
+        <img id="bg-new-york" src="./images/New-York.jpg" alt="New York">
+        <div class="bg-mask"></div>
+        <div class="card" data-id="bg-tokyo">
+            <div class="card-header">
+                <h1>Tokyo</h1>
+            </div>
+            <div class="card-body">
+                <p>Summer is the warm season. Days are longer, the air is hotter, and people often go hiking, swimming, or have picnics. Summer is a time for relaxation and freedom.</p>
+            </div>
+        </div> 
+        <div class="card" data-id="bg-frankfurt">
+            <div class="card-header">
+                <h1>Frankfurt</h1>
+            </div>
+            <div class="card-body">
+                <p>Autumn is the vibrant season of deciduous trees. Leaves turn yellow, orange, and red, then fall to the ground. Autumn days are cool but still pleasant.</p>
+            </div>
+        </div>
+        <div class="card" data-id="bg-london">
+            <div class="card-header">
+                <h1>London</h1>
+            </div>
+            <div class="card-body">
+                <p>Winter is cold and snowy. Trees are bare, nature is quieter, and people bundle up in warm clothes. Winter is associated with Christmas and New Year’s celebrations.</p>
+            </div>
+        </div>
+        <div class="card" data-id="bg-new-york">
+            <div class="card-header">
+                <h1>New York</h1>
+            </div>
+            <div class="card-body">
+                <p>Spring is the time of renewal and blossoming. After the cold winter months, plants emerge from the ground, trees sprout leaves, and birds return. Spring is colorful and fresh.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const cards = document.querySelectorAll(".card");
+        let containerState = "bg-tokyo";
+        let prevContainerState = "bg-tokyo"
+
+        function handleMouseOver(event) {
+            const dataset = event.target.dataset.id;
+
+            prevContainerState = containerState;
+            containerState = dataset;
+
+            if(prevContainerState !== containerState) {
+                document.getElementById(prevContainerState).style.opacity = 0;
+                document.getElementById(containerState).style.opacity = 1;
+            }
+        }
+
+        cards.forEach((div) => {
+            div.addEventListener("mouseenter", handleMouseOver);
+        });
+    </script>
+</body>
+</html>
